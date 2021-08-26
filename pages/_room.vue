@@ -34,49 +34,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { v4 as uuidv4 } from 'uuid'
-
-function getColor () {
-  return 'hsl(' + 360 * Math.random() + ',' +
-             (25 + 70 * Math.random()) + '%,' +
-             (85 + 10 * Math.random()) + '%)'
-}
-
-const extracted = []
-function between (min, max) {
-  return Math.floor(
-    Math.random() * (max - min) + min
-  )
-}
-
-function getRand () {
-  const n = between(0, 100)
-  if (extracted.includes(n)) {
-    return getRand()
-  }
-
-  extracted.push(n)
-  return n
-}
-
-function getPartecipant (name) {
-  const length = getRand()
-  return {
-    color: getColor(), name, length, id: uuidv4()
-  }
-}
+import socket from '~/plugins/socket.io.js'
 
 export default {
+  asyncData ({ params: { room: roomId } }) {
+    return new Promise(resolve =>
+      socket.emit('get-room', roomId, ({ picked, straws }) => resolve({ picked, straws, roomId }))
+    )
+  },
   data () {
-    const straws = []
-
-    for (let i = 0; i < 50; i++) {
-      straws.push(getPartecipant('Lino'))
-    }
-
     return {
-      picked: [],
-      straws,
       showModal: false,
       showAlert: false,
       lastPicked: null
@@ -85,11 +52,12 @@ export default {
   computed: {
     ...mapGetters(['name', 'userId'])
   },
+  mounted () {
+    socket.emit('subscribe', this.roomId)
+
+    socket.on('picked', item => this.pickedCallback(item))
+  },
   methods: {
-    add () {
-      const p = getPartecipant('Lino')
-      this.picked.push(p)
-    },
     sort () {
       this.picked = this.picked.sort((a, b) => a.length > b.length ? 1 : -1)
     },
@@ -105,8 +73,18 @@ export default {
         return
       }
 
-      item.name = this.name
-      item.userId = this.userId
+      socket.emit('pick', {
+        strawId: item.id,
+        roomId: this.roomId,
+        name: this.name,
+        userId: this.userId
+      }, item => this.pickedCallback(item))
+    },
+    pickedCallback (item) {
+      if (!item) {
+        return
+      }
+
       this.straws.splice(this.straws.findIndex(i => i.id === item.id), 1)
       this.picked.unshift(item)
     }

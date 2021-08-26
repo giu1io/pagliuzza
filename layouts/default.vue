@@ -1,7 +1,9 @@
 <template>
   <div id="page">
     <div id="header">
-      <img id="logo" src="/pagliuzza_logo.svg">
+      <NuxtLink to="/">
+        <img id="logo" src="/pagliuzza_logo.svg">
+      </NuxtLink>
       <div id="username" @click="showModal = true">
         {{ name || `${$t('header.name')}...` }}
       </div>
@@ -45,7 +47,7 @@ export default {
   }
 
   #logo {
-    max-width: 200px;
+    width: 200px;
   }
 
   #username {
