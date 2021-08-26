@@ -1,0 +1,67 @@
+<template>
+  <Modal @close="close">
+    <form @submit="$event.preventDefault(); save()">
+      <div class="content input">
+        <input :placeholder="placeholder" class="name" :value="name" type="text" @input="inputValue = $event.target.value">
+      </div>
+      <div class="content buttons">
+        <button class="basic-button" type="button" @click="close">
+          {{ $t('name_modal.cancel') }}
+        </button>
+        <button class="basic-button" type="submit">
+          {{ $t('name_modal.save') }}
+        </button>
+      </div>
+    </form>
+  </Modal>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data () {
+    return {
+      inputValue: this.name
+    }
+  },
+  computed: {
+    ...mapGetters(['name']),
+    placeholder () {
+      return `${this.$i18n.t('name_modal.your_name')}...`
+    }
+  },
+  methods: {
+    close () {
+      this.$emit('close')
+    },
+    save () {
+      // this.$store.setName()
+      this.$store.commit('setName', this.inputValue || this.name)
+      this.$emit('saved', this.inputValue)
+    }
+  }
+}
+</script>
+
+<style scoped>
+  .content.input {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  input.name {
+    width: 90%;
+    font-size: 1.2em;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+  }
+</style>

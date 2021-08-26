@@ -1,0 +1,16 @@
+{
+  "header": {
+    "name": "Nome"
+  },
+  "alert_modal": {
+    "acknowledge": "Ok"
+  },
+  "name_modal": {
+    "save": "Salva",
+    "cancel": "Annulla",
+    "your_name": "Il tuo nome"
+  },
+  "errors": {
+    "stick_already_picked": "Hai già scelto la tua pagliuzza!"
+  }
+}
