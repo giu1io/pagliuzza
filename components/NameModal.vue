@@ -2,7 +2,7 @@
   <Modal @close="close">
     <form @submit="$event.preventDefault(); save()">
       <div class="content input">
-        <input :placeholder="placeholder" class="name" :value="name" type="text" @input="inputValue = $event.target.value">
+        <input :placeholder="placeholder" class="basic-text" :value="name" type="text" @input="inputValue = $event.target.value">
       </div>
       <div class="content buttons">
         <button class="basic-button" type="button" @click="close">
@@ -54,14 +54,5 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-  }
-
-  input.name {
-    width: 90%;
-    font-size: 1.2em;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    padding: 10px;
   }
 </style>

@@ -2,6 +2,10 @@
   "header": {
     "name": "Nome"
   },
+  "home": {
+    "go_to_room": "inizia a estrarre",
+    "room_name_placeholder": "nome estrazione"
+  },
   "alert_modal": {
     "acknowledge": "Ok"
   },

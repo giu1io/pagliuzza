@@ -2,6 +2,10 @@
   "header": {
     "name": "Name"
   },
+  "home": {
+    "go_to_room": "start picking",
+    "room_name_placeholder": "picking name"
+  },
   "alert_modal": {
     "acknowledge": "Ok"
   },

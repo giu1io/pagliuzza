@@ -22,3 +22,12 @@ button.basic-button {
   font-size: 1em;
   cursor: pointer;
 }
+
+input.basic-text {
+  width: 90%;
+  font-size: 1.2em;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 10px;
+}
