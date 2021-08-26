@@ -8,7 +8,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "docker:build": "./docker-utils/build.sh $npm_package_version",
+    "docker:push": "./docker-utils/push.sh $npm_package_version"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^7.0.2",
