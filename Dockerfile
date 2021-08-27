@@ -15,6 +15,7 @@ WORKDIR /app
 COPY . /app
 
 COPY --from=build /app/.nuxt ./.nuxt
+COPY --from=build /app/static/sw.js ./app/static/sw.js
 
 ENV NODE_ENV=production
 
