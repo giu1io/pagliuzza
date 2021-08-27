@@ -20,10 +20,6 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~/assets/css/main'],
 
-  env: {
-    WS_URL: process.env.WS_URL || 'http://localhost:3000'
-  },
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vuex-persist', ssr: false }

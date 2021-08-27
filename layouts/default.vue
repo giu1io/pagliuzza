@@ -30,7 +30,7 @@
       <span>
         &copy; {{ year }}
         <a rel="noreferrer" target="_blank" href="https://giuliomontagner.com">Giulio Montagner</a>
-        – Fork me on <a rel="noreferrer" target="_blank" href="https://github.com/giu1io">GitHub</a>
+        – Fork me on <a rel="noreferrer" target="_blank" href="https://github.com/giu1io/pagliuzza">GitHub</a>
       </span>
     </div>
   </div>
