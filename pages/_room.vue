@@ -5,11 +5,6 @@
       @close="showModal = false"
       @saved="showModal = false; pick(lastPicked)"
     />
-    <Alert
-      v-if="showAlert"
-      :message="$t('errors.stick_already_picked')"
-      @close="showAlert = false"
-    />
     <transition-group name="picked" class="picked" tag="ul" @after-enter="sort">
       <li v-for="item in picked" :key="item.id" class="picked-item" :style="{ 'background-color': item.color, 'width': `calc(${item.length}% - 20px)` }">
         <span>{{ item.name }}</span>
@@ -45,7 +40,6 @@ export default {
   data () {
     return {
       showModal: false,
-      showAlert: false,
       lastPicked: null
     }
   },
@@ -69,7 +63,7 @@ export default {
       }
 
       if (this.picked.find(i => i.userId === this.userId)) {
-        this.showAlert = true
+        this.$toast.error(this.$i18n.t('errors.stick_already_picked'), { duration: 4000 })
         return
       }
 

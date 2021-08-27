@@ -14,7 +14,11 @@
     "cancel": "Annulla",
     "your_name": "Il tuo nome"
   },
+  "clipboard": {
+    "success": "Link copiato negli appunti!"
+  },
   "errors": {
-    "stick_already_picked": "Hai già scelto la tua pagliuzza!"
+    "stick_already_picked": "Hai già scelto la tua pagliuzza!",
+    "something_went_wrong": "Qualcosa è andato storto!"
   }
 }

@@ -4,8 +4,18 @@
       <NuxtLink to="/">
         <img id="logo" src="/images/pagliuzza_logo.svg">
       </NuxtLink>
-      <div id="username" @click="showModal = true">
-        {{ name || `${$t('header.name')}...` }}
+      <div>
+        <button class="basic-button" @click="copy">
+          <img src="/images/copy.svg" class="icon" alt="copy icon">
+        </button>
+        <client-only>
+          <button v-if="canShare" class="basic-button" @click="share">
+            <img src="/images/share.svg" class="icon" alt="share icon">
+          </button>
+        </client-only>
+        <button id="username" class="basic-button" @click="showModal = true">
+          {{ name || `${$t('header.name')}...` }}
+        </button>
       </div>
       <NameModal
         v-if="showModal"
@@ -37,7 +47,21 @@ export default {
     year: getYear(new Date())
   }),
   computed: {
-    ...mapGetters(['name'])
+    ...mapGetters(['name']),
+    canShare () {
+      return process.client && typeof navigator.share === 'function'
+    }
+  },
+  methods: {
+    share () {
+      navigator.share({ url: window.location })
+        .catch(() => {})
+    },
+    copy () {
+      navigator.clipboard.writeText(window.location)
+        .then(() => this.$toast.success(this.$i18n.t('clipboard.success'), { duration: 4000 }))
+        .catch(() => this.$toast.error(this.$i18n.t('errors.something_went_wrong')), { duration: 4000 })
+    }
   }
 }
 </script>
@@ -53,15 +77,22 @@ export default {
   }
 
   #logo {
-    width: 200px;
+    width: 100px;
   }
 
   #username {
     margin-right: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
+  }
+
+  .icon {
+    width:15px;
+    height:15px;
+  }
+
+  content {
+    position: relative;
+    display: block;
+    margin-bottom: 50px;
   }
 
   #footer {
@@ -75,6 +106,17 @@ export default {
     width: 100%;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+    font-size: 0.8em;
+  }
+
+  @media screen and (min-width: 400px) {
+    #logo {
+      width: 200px;
+    }
+
+    #footer {
+      font-size: inherit;
+    }
   }
 
 </style>

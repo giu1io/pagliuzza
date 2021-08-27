@@ -14,7 +14,11 @@
     "cancel": "Cancel",
     "your_name": "your name"
   },
+  "clipboard": {
+    "success": "Link copied to clipboard!"
+  },
   "errors": {
-    "stick_already_picked": "You already picked your (potentially) shortest straw!"
+    "stick_already_picked": "You already picked your (potentially) shortest straw!",
+    "something_went_wrong": "Something went wrong"
   }
 }

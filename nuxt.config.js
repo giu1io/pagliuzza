@@ -43,6 +43,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/i18n',
+    '@nuxtjs/toast',
     '~/io'
   ],
 
@@ -59,6 +60,10 @@ export default {
     ],
     langDir: 'lang/',
     defaultLocale: process.env.DEFAULT_LOCALE || 'it'
+  },
+
+  toast: {
+    position: 'top-center'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
