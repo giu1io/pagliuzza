@@ -1,7 +1,7 @@
 <template>
   <div id="page">
     <div id="header">
-      <NuxtLink to="/">
+      <NuxtLink :to="localePath('/')">
         <img id="logo" src="/images/pagliuzza_logo.svg">
       </NuxtLink>
       <div>

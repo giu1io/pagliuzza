@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <img src="/images/boy-on-hay-bale.png">
-    <form :action="roomId">
+    <form :action="localePath(`/${roomId}`)">
       <div class="input-container">
         <input v-model="roomId" type="text" class="basic-text" :placeholder="$t('home.room_name_placeholder')">
       </div>
