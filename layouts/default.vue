@@ -92,7 +92,7 @@ export default {
   content {
     position: relative;
     display: block;
-    margin-bottom: 50px;
+    margin-bottom: 200px;
   }
 
   #footer {
