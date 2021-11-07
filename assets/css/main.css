@@ -13,6 +13,7 @@ a {
 }
 
 button.basic-button {
+  color: black;
   background-color: white;
   border-radius: 5px;
   border: 1px solid black;
@@ -21,6 +22,7 @@ button.basic-button {
   padding-right: 10px;
   font-size: 1em;
   cursor: pointer;
+  font-weight: inherit;
 }
 
 input.basic-text {
