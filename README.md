@@ -1,6 +1,6 @@
 # Pagliuzza
 
-Small web app built with [Nuxt](https://nuxtjs.org) to see who is going to draw the shortest stick between a group of people. Currently hosted at [pagliuzza.cf](https://pagliuzza.cf).
+Small web app built with [Nuxt](https://nuxtjs.org) to see who is going to draw the shortest stick between a group of people. Currently hosted at [pagliuzza.giulio.dev](https://pagliuzza.giulio.dev).
 
 ## Build Setup
 
